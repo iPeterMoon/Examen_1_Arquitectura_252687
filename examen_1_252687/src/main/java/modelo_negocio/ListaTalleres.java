@@ -3,12 +3,23 @@ package modelo_negocio;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * ListaTalleres.java
+ * 
+ * Repositorio de datos para los objetos Taller (simula la base de datos).
+ * Implementa el patrón Singleton.
+ * 
+ * @author Pedro Luna Esquer - 252687
+ */
 public class ListaTalleres {
     private List<Taller> talleres;
 
     private static ListaTalleres instance;
 
-    private ListaTalleres(){
+    /**
+     * Constructor privado que inicializa el repositorio con datos de prueba (mock).
+     */
+    private ListaTalleres() {
         talleres = new LinkedList<>();
 
         // Datos mock para pruebas
@@ -19,14 +30,24 @@ public class ListaTalleres {
         talleres.add(new Taller("Pintura Creativa", "Sofía Torres", "2025-10-20 11:00 - 12:00 p.m.", 12));
     }
 
-    public static ListaTalleres getInstance(){
-        if(instance == null) {
+    /**
+     * Accesor Singleton para obtener la única instancia del repositorio.
+     * 
+     * @return La instancia única de ListaTalleres.
+     */
+    public static ListaTalleres getInstance() {
+        if (instance == null) {
             instance = new ListaTalleres();
         }
         return instance;
     }
 
-    public List<Taller> getTalleres(){
+    /**
+     * Regresa la lista completa de talleres.
+     * 
+     * @return Lista de objetos Taller.
+     */
+    public List<Taller> getTalleres() {
         return talleres;
     }
 }

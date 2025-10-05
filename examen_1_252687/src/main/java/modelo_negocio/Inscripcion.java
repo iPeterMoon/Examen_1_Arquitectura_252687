@@ -1,8 +1,12 @@
 package modelo_negocio;
 
 /**
- *
- * @author pedro
+ * Inscripcion.java
+ * 
+ * Clase de Entidad que representa el registro (Ticket) de la inscripción de un Alumno a un Taller.
+ * Es el resultado de la transacción exitosa.
+ * 
+ * @author Pedro Luna Esquer - 252687
  */
 public class Inscripcion {
     private Alumno alumno;
@@ -10,6 +14,13 @@ public class Inscripcion {
     private String folio;
     private String fechaRegistro;
 
+    /**
+     * Constructor para crear una nueva inscripción.
+     * @param alumno El alumno inscrito.
+     * @param taller El taller seleccionado.
+     * @param folio Folio de identificación único generado.
+     * @param fechaRegistro Fecha y hora exacta del registro.
+     */
     public Inscripcion(Alumno alumno, Taller taller, String folio, String fechaRegistro) {
         this.alumno = alumno;
         this.taller = taller;
@@ -17,37 +28,36 @@ public class Inscripcion {
         this.fechaRegistro = fechaRegistro;
     }
 
+    /**
+     * Regresa el alumno asociado a esta inscripción.
+     * @return El objeto Alumno.
+     */
     public Alumno getAlumno() {
         return alumno;
     }
 
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
-    }
-
+    /**
+     * Regresa el taller asociado a esta inscripción.
+     * @return El objeto Taller.
+     */
     public Taller getTaller() {
         return taller;
     }
 
-    public void setTaller(Taller taller) {
-        this.taller = taller;
-    }
-
+    /**
+     * Regresa el folio de la inscripción.
+     * @return El folio.
+     */
     public String getFolio() {
         return folio;
     }
 
-    public void setFolio(String folio) {
-        this.folio = folio;
-    }
-
+    /**
+     * Regresa la fecha y hora de registro.
+     * @return La fecha de registro.
+     */
     public String getFechaRegistro() {
         return fechaRegistro;
     }
-
-    public void setFechaRegistro(String fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-    
     
 }

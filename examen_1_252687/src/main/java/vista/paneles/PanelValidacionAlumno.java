@@ -1,6 +1,7 @@
 package vista.paneles;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import javax.swing.JOptionPane;
 
@@ -141,6 +142,7 @@ public class PanelValidacionAlumno extends javax.swing.JPanel {
 
     private void txtIDAlumnoMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_txtIDAlumnoMouseClicked
         txtIDAlumno.setText("");
+        txtIDAlumno.setForeground(Color.BLACK);
     }// GEN-LAST:event_txtIDAlumnoMouseClicked
 
     private void btnInscribirseActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnInscribirseActionPerformed

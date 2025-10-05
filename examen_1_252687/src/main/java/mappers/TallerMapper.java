@@ -18,7 +18,7 @@ public class TallerMapper {
      * TallerSubject del modelo (vista) para presentar los datos en la pantalla.
      * 
      * @param taller Taller a mapear
-     * @return TallerSubject con  los mismos datos del taller
+     * @return TallerSubject con los mismos datos del taller
      */
     public static TallerSubject toVista(Taller taller) {
         String nombre = taller.getNombre();

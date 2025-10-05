@@ -4,15 +4,22 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
- * @author pedro
+ * ListaAlumnos.java
+ * 
+ * Repositorio de datos para los objetos Alumno (simula la base de datos).
+ * Implementa el patrón Singleton.
+ * 
+ * @author Pedro Luna Esquer - 252687
  */
 public class ListaAlumnos {
     private List<Alumno> alumnos;
 
     private static ListaAlumnos instance;
 
-    private ListaAlumnos(){
+    /**
+     * Constructor privado que inicializa el repositorio con datos de prueba (mock).
+     */
+    private ListaAlumnos() {
         this.alumnos = new LinkedList<>();
 
         // Datos mock para pruebas
@@ -23,19 +30,33 @@ public class ListaAlumnos {
         this.alumnos.add(new Alumno("111111", "Sofía Torres", "1", "Diseño"));
     }
 
-    // Singleton accessor
-    public static ListaAlumnos getInstance(){
-        if(instance == null){
+    /**
+     * Accesor Singleton para obtener la única instancia del repositorio.
+     * 
+     * @return La instancia única de ListaAlumnos.
+     */
+    public static ListaAlumnos getInstance() {
+        if (instance == null) {
             instance = new ListaAlumnos();
         }
         return instance;
     }
 
-    public void agregarAlumno(Alumno alumno){
+    /**
+     * Agrega un nuevo alumno al repositorio.
+     * 
+     * @param alumno Alumno a agregar.
+     */
+    public void agregarAlumno(Alumno alumno) {
         alumnos.add(alumno);
     }
 
-    public List<Alumno> getAlumnos(){
+    /**
+     * Regresa la lista completa de alumnos.
+     * 
+     * @return Lista de objetos Alumno.
+     */
+    public List<Alumno> getAlumnos() {
         return alumnos;
     }
 }
