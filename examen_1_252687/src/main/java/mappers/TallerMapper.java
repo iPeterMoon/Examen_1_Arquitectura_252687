@@ -12,8 +12,15 @@ import modelo_negocio.Taller;
  * @author Pedro Luna Esquer
  */
 public class TallerMapper {
-    
-    public static TallerSubject toVista(Taller taller){
+
+    /**
+     * Metodo que mapea una clase Taller del modelo-negocio a una clase
+     * TallerSubject del modelo (vista) para presentar los datos en la pantalla.
+     * 
+     * @param taller Taller a mapear
+     * @return TallerSubject con  los mismos datos del taller
+     */
+    public static TallerSubject toVista(Taller taller) {
         String nombre = taller.getNombre();
         String instructor = taller.getInstructor();
         String fechaYHora = taller.getFechaYHora();
