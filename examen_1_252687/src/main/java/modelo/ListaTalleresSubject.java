@@ -6,7 +6,8 @@ import java.util.List;
 /**
  * ListaTalleresSubject.java
  * 
- * Clase que almacena la lista de talleres en el modelo de parte del mvc para mostrarlos en la vista.
+ * Clase que almacena la lista de talleres en el modelo de parte del mvc para
+ * mostrarlos en la vista.
  * 
  * @author Pedro Luna Esquer
  */
@@ -26,8 +27,13 @@ public class ListaTalleresSubject extends Subject {
         this.talleres = new LinkedList<>();
     }
 
-    public static ListaTalleresSubject getInstance(){
-        if(instance == null){
+    /**
+     * Obtiene la única instancia de ListaTalleresSubject (Singleton).
+     * 
+     * @return La instancia única de ListaTalleresSubject.
+     */
+    public static ListaTalleresSubject getInstance() {
+        if (instance == null) {
             instance = new ListaTalleresSubject();
         }
         return instance;
@@ -35,31 +41,21 @@ public class ListaTalleresSubject extends Subject {
 
     /**
      * Metodo para agregar un taller a la lista de talleres
+     * 
      * @param taller Taller a agregar a la lista
      */
-    public void agregarTaller(TallerSubject taller){
+    public void agregarTaller(TallerSubject taller) {
         this.talleres.add(taller);
         notifyAllObservers();
     }
-    
-    /**
-     * Metodo para actualizar un taller de la lista de talleres
-     * reemplaza todos los valores del taller que estaban en la lista
-     * @param tallerActualizado Taller con nuevos datos
-     */
-    public void actualizarTaller(TallerSubject tallerActualizado) {
-        for(TallerSubject taller : talleres) {
-            if(taller.getNombre().equals(tallerActualizado.getNombre())){
-                taller.setNombre(tallerActualizado.getNombre());
-                taller.setInstructor(tallerActualizado.getInstructor());
-                taller.setFechaYHora(tallerActualizado.getFechaYHora());
-                taller.setCupo(tallerActualizado.getCupo());
-            }
-        }
-    }
 
-    public List<TallerSubject> getListaTalleres(){
+    /**
+     * Regresa la lista completa de talleres.
+     * 
+     * @return La lista de TallerSubject.
+     */
+    public List<TallerSubject> getListaTalleres() {
         return talleres;
     }
-    
+
 }

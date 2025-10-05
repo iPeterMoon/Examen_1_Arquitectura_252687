@@ -8,9 +8,9 @@ import vista.IObserver;
 /**
  * Subject.java
  * 
- *  Clase que representa un sujeto observado (Patron Observer)
+ * Clase que representa un sujeto observado (Patron Observer)
  *
- * @author Pedro Luna Esquer
+ * @author Pedro Luna Esquer - 252687
  */
 public abstract class Subject {
     
