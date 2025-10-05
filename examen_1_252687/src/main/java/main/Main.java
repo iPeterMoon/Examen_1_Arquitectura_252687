@@ -12,7 +12,7 @@ import vista.PantallaInscripcion;
 public class Main {
 
     public static void main(String[] args) {
-        PantallaInscripcion pantalla = new PantallaInscripcion();
+        PantallaInscripcion pantalla = PantallaInscripcion.getInstance();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
     }

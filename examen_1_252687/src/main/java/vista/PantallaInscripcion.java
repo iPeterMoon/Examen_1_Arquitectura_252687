@@ -1,5 +1,7 @@
 package vista;
 
+import modelo.Subject;
+
 /**
  * PantallaInscripcion.java
  * 
@@ -12,10 +14,25 @@ package vista;
 public class PantallaInscripcion extends javax.swing.JFrame {
     
     /**
+     * Instancia de la pantalla del caso de uso (Singleton)
+     */
+    private static PantallaInscripcion instance;
+
+    /**
      * Creates new form PantallaInscripcion
      */
-    public PantallaInscripcion() {
+    private PantallaInscripcion() {
         initComponents();
+    }
+
+    /**
+     * Metodo para obtener la instancia única de la pantalla del caso de uso.
+     */
+    public static PantallaInscripcion getInstance(){
+        if(instance==null){
+            instance = new PantallaInscripcion();
+        }
+        return instance;
     }
 
     /**
@@ -140,6 +157,14 @@ public class PantallaInscripcion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    /**
+     * Metodo que se llama cuando cambia algo del modelo
+     * @param subject Recibe un subject que fue la clase que cambio
+     */
+    public void actualizarVista(Subject subject){
+        //TODO: Agregar metodos para actualizar la vista.
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
