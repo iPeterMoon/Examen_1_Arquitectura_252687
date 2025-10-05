@@ -27,7 +27,7 @@ public class ListaTalleres {
         talleres.add(new Taller("Diseño 3D", "Laura Gómez", "2025-10-12 10:00 - 12:00 p.m.", 15));
         talleres.add(new Taller("Programación Web", "Pedro Luna", "2025-10-15 14:00 - 16:30 p.m.", 25));
         talleres.add(new Taller("Robótica Básica", "Ana García", "2025-10-18 09:00 - 11:00 a.m.", 18));
-        talleres.add(new Taller("Pintura Creativa", "Sofía Torres", "2025-10-20 11:00 - 12:00 p.m.", 12));
+        talleres.add(new Taller("Pintura Creativa", "Sofía Torres", "2025-10-20 11:00 - 12:00 p.m.", 1));
     }
 
     /**
