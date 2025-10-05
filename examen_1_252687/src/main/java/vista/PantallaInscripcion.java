@@ -2,10 +2,15 @@ package vista;
 
 import java.awt.BorderLayout;
 
+import modelo.AlumnoSubject;
 import modelo.ListaTalleresSubject;
 import modelo.Subject;
 import modelo.TallerSubject;
+import modelo.TicketSubject;
+import vista.paneles.PanelDatosAlumno;
 import vista.paneles.PanelDetallesTaller;
+import vista.paneles.PanelTicket;
+import vista.paneles.PanelValidacionAlumno;
 
 /**
  * PantallaInscripcion.java
@@ -59,6 +64,7 @@ public class PantallaInscripcion extends javax.swing.JFrame {
         panelTalleres = new vista.paneles.PanelTalleres();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -73,6 +79,7 @@ public class PantallaInscripcion extends javax.swing.JFrame {
         jLabel2.setText("Detalles y Proceso");
 
         panelContenedorDetalles.setBackground(new java.awt.Color(255, 255, 255));
+        panelContenedorDetalles.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -105,18 +112,7 @@ public class PantallaInscripcion extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout panelContenedorDetallesLayout = new javax.swing.GroupLayout(panelContenedorDetalles);
-        panelContenedorDetalles.setLayout(panelContenedorDetallesLayout);
-        panelContenedorDetallesLayout.setHorizontalGroup(
-            panelContenedorDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        panelContenedorDetallesLayout.setVerticalGroup(
-            panelContenedorDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelContenedorDetallesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        panelContenedorDetalles.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -9, 501, 300));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -125,7 +121,7 @@ public class PantallaInscripcion extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(294, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelContenedorDetalles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -165,20 +161,11 @@ public class PantallaInscripcion extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelTalleres, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE))
+                    .addComponent(panelTalleres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -190,6 +177,8 @@ public class PantallaInscripcion extends javax.swing.JFrame {
     public void actualizarVista(Subject subject){
         actualizarPanelesTalleres(subject);
         mostrarDetallesTaller(subject);
+        mostrarDatosAlumno(subject);
+        mostrarTicket(subject);
     }
 
     private void actualizarPanelesTalleres(Subject subject){
@@ -215,7 +204,38 @@ public class PantallaInscripcion extends javax.swing.JFrame {
         }
     }
 
+    private void mostrarDatosAlumno(Subject subject) {
+        if (subject instanceof AlumnoSubject){
+            AlumnoSubject alumno = (AlumnoSubject) subject;
+            PanelValidacionAlumno panelFormularioID = new PanelValidacionAlumno();
+            panelFormularioID.mostrarDatosAlumno(alumno);
+            panelContenedorDetalles.removeAll();
+            panelContenedorDetalles.add(panelFormularioID, BorderLayout.CENTER);
+            panelContenedorDetalles.repaint();
+            panelContenedorDetalles.revalidate();
+            
+        }
+    }
 
+    public void mostrarFormularioID(){
+        PanelValidacionAlumno panelFormularioID = new PanelValidacionAlumno();
+        panelContenedorDetalles.removeAll();
+        panelContenedorDetalles.add(panelFormularioID, BorderLayout.CENTER);
+        panelContenedorDetalles.repaint();
+        panelContenedorDetalles.revalidate();
+        
+    }
+
+    private void mostrarTicket(Subject subject){
+        if(subject instanceof TicketSubject){
+            TicketSubject ticket = (TicketSubject) subject;
+            PanelTicket panelTicket = new PanelTicket(ticket);
+            panelContenedorDetalles.removeAll();
+            panelContenedorDetalles.add(panelTicket, BorderLayout.CENTER);
+            panelContenedorDetalles.repaint();
+            panelContenedorDetalles.revalidate();
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

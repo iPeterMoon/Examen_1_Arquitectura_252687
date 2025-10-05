@@ -22,4 +22,8 @@ public class ListaInscripciones {
     public void agregarInscripcion(Inscripcion inscripcion){
         inscripciones.add(inscripcion);
     }
+
+    public List<Inscripcion> getInscripciones(){
+        return inscripciones;
+    }
 }

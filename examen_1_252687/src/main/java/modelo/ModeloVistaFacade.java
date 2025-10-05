@@ -9,9 +9,10 @@ import vista.PantallaInscripcion;
 public class ModeloVistaFacade implements IModeloVista {
 
     @Override
-    public void mostrarAlumno() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarAlumno'");
+    public void mostrarAlumno(AlumnoSubject alumno) {
+        IObserver observer = new ModelObserver();
+        alumno.addObserver(observer);
+        alumno.notifyAllObservers();
     }
 
     @Override
@@ -22,9 +23,10 @@ public class ModeloVistaFacade implements IModeloVista {
     }
 
     @Override
-    public void mostrarTicket() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarTicket'");
+    public void mostrarTicket(TicketSubject ticket) {
+        IObserver observer = new ModelObserver();
+        ticket.addObserver(observer);
+        ticket.notifyAllObservers();
     }
 
     @Override

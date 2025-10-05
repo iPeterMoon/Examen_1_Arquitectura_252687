@@ -1,5 +1,8 @@
 package modelo;
 
+import exceptions.AlumnoNoEncontradoException;
+import exceptions.InscripcionNoValidaException;
+
 /**
  * IModeloControl.java
  * 
@@ -10,13 +13,11 @@ package modelo;
 public interface IModeloControl {
     public void seleccionarTaller(String nombreTaller);
 
-    public void inscribir(String nombreTaller, String id);
-
-    public void confirmarInscripcion();
+    public void inscribir(String id) throws InscripcionNoValidaException;
 
     /**
      * Método que valida un id de un estudiante
      * @param id ID a validar
      */
-    public void validarID(String id);
+    public void validarID(String id) throws AlumnoNoEncontradoException;
 }

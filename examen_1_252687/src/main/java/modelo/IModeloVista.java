@@ -1,18 +1,16 @@
 package modelo;
 
-import java.util.List;
-
 /**
  *
  * @author pedro
  */
 public interface IModeloVista {
     
-    public void mostrarAlumno();
+    public void mostrarAlumno(AlumnoSubject alumno);
 
     public void mostrarDetallesTaller(TallerSubject taller);
 
-    public void mostrarTicket();
+    public void mostrarTicket(TicketSubject ticket);
     
     public void agregarTaller(TallerSubject taller);
 

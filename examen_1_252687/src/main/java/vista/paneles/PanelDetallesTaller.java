@@ -1,6 +1,7 @@
 package vista.paneles;
 
 import modelo.TallerSubject;
+import vista.PantallaInscripcion;
 
 /**
  * 
@@ -77,6 +78,12 @@ public class PanelDetallesTaller extends javax.swing.JPanel {
         btnInscribirse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnInscribirse.setForeground(new java.awt.Color(255, 255, 255));
         btnInscribirse.setText("Inscribirse");
+        btnInscribirse.setFocusPainted(false);
+        btnInscribirse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInscribirseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -127,6 +134,11 @@ public class PanelDetallesTaller extends javax.swing.JPanel {
                 .addContainerGap(39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnInscribirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscribirseActionPerformed
+        PantallaInscripcion pantalla = PantallaInscripcion.getInstance();
+        pantalla.mostrarFormularioID();
+    }//GEN-LAST:event_btnInscribirseActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

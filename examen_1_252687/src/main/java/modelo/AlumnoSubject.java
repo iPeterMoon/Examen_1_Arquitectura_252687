@@ -10,6 +10,7 @@ package modelo;
  */
 public class AlumnoSubject extends Subject{
     
+
     private String id;
     private String nombre;
     private String semestre;

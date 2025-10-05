@@ -1,5 +1,7 @@
 package control;
 
+import exceptions.AlumnoNoEncontradoException;
+import exceptions.InscripcionNoValidaException;
 import modelo.IModeloControl;
 import modelo.ModeloControlImp;
 
@@ -10,11 +12,13 @@ public class ControlInscribirTaller {
         modelo.seleccionarTaller(nombre);
     }
 
-    public void confirmarInscripcion(String nombreTaller, String idAlumno){
-
+    public void inscribir(String idAlumno) throws InscripcionNoValidaException{
+        IModeloControl modelo = new ModeloControlImp();
+        modelo.inscribir(idAlumno);
     }
 
-    public void validarID(String idAlumno){
-
+    public void validarID(String idAlumno) throws AlumnoNoEncontradoException{
+        IModeloControl modelo = new ModeloControlImp();
+        modelo.validarID(idAlumno);
     }
 }

@@ -4,6 +4,10 @@
  */
 package vista.paneles;
 
+import modelo.AlumnoSubject;
+import modelo.TallerSubject;
+import modelo.TicketSubject;
+
 /**
  *
  * @author pedro
@@ -13,8 +17,21 @@ public class PanelTicket extends javax.swing.JPanel {
     /**
      * Creates new form PanelTicket
      */
-    public PanelTicket() {
+    public PanelTicket(TicketSubject ticket) {
         initComponents();
+        cargarTicket(ticket);
+    }
+
+    private void cargarTicket(TicketSubject ticket){
+        TallerSubject taller = ticket.getTaller();
+        AlumnoSubject alumno = ticket.getAlumno();
+        lblNombreTaller.setText(taller.getNombre());
+        lblFolio.setText(ticket.getFolio());
+        lblAlumno.setText(alumno.getNombre());
+        lblInstructor.setText(taller.getInstructor());
+        lblPrograma.setText(alumno.getPrograma());
+        lblHorario.setText(taller.getFechaYHora());
+        lblFechaRegistro.setText(ticket.getFechaRegistro());
     }
 
     /**
