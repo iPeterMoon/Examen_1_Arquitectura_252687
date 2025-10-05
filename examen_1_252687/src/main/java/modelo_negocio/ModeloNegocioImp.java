@@ -1,5 +1,6 @@
 package modelo_negocio;
 
+import java.security.InvalidParameterException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -58,7 +59,8 @@ public class ModeloNegocioImp implements IModeloNegocio {
             if (taller.getNombre().equals(nombre)) {
                 this.tallerSeleccionado = taller;
                 IModeloVista modeloVista = new ModeloVistaFacade();
-                // Utiliza un Mapper para convertir la entidad de negocio a un Subject de la vista
+                // Utiliza un Mapper para convertir la entidad de negocio a un Subject de la
+                // vista
                 modeloVista.mostrarDetallesTaller(TallerMapper.toVista(tallerSeleccionado));
             }
         }
@@ -179,6 +181,9 @@ public class ModeloNegocioImp implements IModeloNegocio {
      */
     @Override
     public void validarID(String idAlumno) throws AlumnoNoEncontradoException {
+        if (!idAlumno.matches("\\d{6}")) {
+            throw new InvalidParameterException("Error: Formato Inválido, asegurese de ingresar un ID de 6 digitos");
+        }
         ListaAlumnos listaAlumnos = ListaAlumnos.getInstance();
         Alumno alumnoEncontrado = null;
         for (Alumno alumno : listaAlumnos.getAlumnos()) {

@@ -7,8 +7,11 @@ import exceptions.InscripcionNoValidaException;
 import modelo.AlumnoSubject;
 
 /**
- *
- * @author pedro
+ * PanelDatosAlumno.java
+ * 
+ * Panel que contiene la información de un alumno
+ * 
+ * @author Pedro Luna Esquer - 252687
  */
 public class PanelDatosAlumno extends javax.swing.JPanel {
 
@@ -23,6 +26,9 @@ public class PanelDatosAlumno extends javax.swing.JPanel {
         cargarDatosAlumno();
     }
 
+    /**
+     * Carga los datos del alumno guardado dentro del panel en los labels del mismo
+     */
     private void cargarDatosAlumno() {
         lblId.setText(alumno.getId());
         lblNombre.setText(alumno.getNombre());
@@ -163,14 +169,21 @@ public class PanelDatosAlumno extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInscribirse1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnInscribirse1ActionPerformed
+        inscribir();
+    }// GEN-LAST:event_btnInscribirse1ActionPerformed
+
+    /**
+     * Metodo que se llama al dar clic en el boton de inscribir.
+     * Se encarga de llamar al control e inscribir el alumno del que se estan mostrando los datos.
+     */
+    private void inscribir(){
         ControlInscribirTaller control = new ControlInscribirTaller();
         try {
             control.inscribir(alumno.getId());
         } catch (InscripcionNoValidaException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }// GEN-LAST:event_btnInscribirse1ActionPerformed
-
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInscribirse;
     private javax.swing.JButton btnInscribirse1;

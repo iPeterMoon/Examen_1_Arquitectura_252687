@@ -4,8 +4,11 @@ import modelo.TallerSubject;
 import vista.PantallaInscripcion;
 
 /**
+ * PanelDetallesTaller.java
  * 
- * @author pedro
+ * Panel que muestra los detalles del taller una vez se selecciona
+ * 
+ * @author Pedro Luna Esquer - 252687
  */
 public class PanelDetallesTaller extends javax.swing.JPanel {
 
@@ -26,8 +29,6 @@ public class PanelDetallesTaller extends javax.swing.JPanel {
         lblInstructor.setText(taller.getInstructor());
         lblFecha.setText(taller.getFechaYHora());
         lblCupo.setText(String.valueOf(taller.getCupo()));
-        repaint();
-        revalidate();
     }
 
 
@@ -136,10 +137,17 @@ public class PanelDetallesTaller extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInscribirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscribirseActionPerformed
+        mostrarFormularioID();
+    }//GEN-LAST:event_btnInscribirseActionPerformed
+    
+    /**
+     * Metodo para mostrar el formulario que recibe el ID del estudiante
+     */
+    private void mostrarFormularioID(){
         PantallaInscripcion pantalla = PantallaInscripcion.getInstance();
         pantalla.mostrarFormularioID();
-    }//GEN-LAST:event_btnInscribirseActionPerformed
-
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInscribirse;

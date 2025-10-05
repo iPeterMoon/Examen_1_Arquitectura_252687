@@ -9,7 +9,9 @@ import modelo.TallerSubject;
 import modelo.TicketSubject;
 
 /**
- *
+ * PanelTicket.java
+ * 
+ * Panel que muestra la inforamación de la inscripción a un taller de un alumno
  * @author pedro
  */
 public class PanelTicket extends javax.swing.JPanel {
@@ -22,6 +24,10 @@ public class PanelTicket extends javax.swing.JPanel {
         cargarTicket(ticket);
     }
 
+    /**
+     * Carga la info de la inscripcion en las etiquetas visuales
+     * @param ticket Ticket a mostrar en el panel
+     */
     private void cargarTicket(TicketSubject ticket){
         TallerSubject taller = ticket.getTaller();
         AlumnoSubject alumno = ticket.getAlumno();

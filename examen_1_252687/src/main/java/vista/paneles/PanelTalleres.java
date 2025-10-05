@@ -11,8 +11,11 @@ import modelo.ListaTalleresSubject;
 import modelo.TallerSubject;
 
 /**
- *
- * @author pedro
+ * PanelTalleres.java
+ * 
+ * Panel en donde se muestra toda la lista de talleres del sistema
+ * 
+ * @author Pedro Luna Esquer - 252687
  */
 public class PanelTalleres extends javax.swing.JPanel {
 
@@ -74,6 +77,10 @@ public class PanelTalleres extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metodo que recibe una lista y muestra la lista de talleres en la pantalla
+     * @param listaTalleres Lista de talleres a mostrar
+     */
     public void actualizarTalleres(ListaTalleresSubject listaTalleres){
         List<TallerSubject> talleres = listaTalleres.getListaTalleres();
         panelContenedorTalleres.removeAll();
@@ -83,10 +90,11 @@ public class PanelTalleres extends javax.swing.JPanel {
             panelContenedorTalleres.add(panelTaller);
             panelContenedorTalleres.add(Box.createVerticalStrut(12));
         }
-        repaint();
-        revalidate();
     }
 
+    /**
+     * Despinta todos los paneles de los talleres, se utiliza al seleccionar un taller.
+     */
     public static void despintarPaneles(){
         for(PanelTaller panel : panelesTalleres){
             panel.setBackground(Color.WHITE);

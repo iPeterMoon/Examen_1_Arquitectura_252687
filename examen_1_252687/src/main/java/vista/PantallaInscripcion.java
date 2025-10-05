@@ -2,12 +2,13 @@ package vista;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JPanel;
+
 import modelo.AlumnoSubject;
 import modelo.ListaTalleresSubject;
 import modelo.Subject;
 import modelo.TallerSubject;
 import modelo.TicketSubject;
-import vista.paneles.PanelDatosAlumno;
 import vista.paneles.PanelDetallesTaller;
 import vista.paneles.PanelTicket;
 import vista.paneles.PanelValidacionAlumno;
@@ -19,7 +20,7 @@ import vista.paneles.PanelValidacionAlumno;
  * a taller de Semana ISW, es en una sola pantalla y esta se va actualizando
  * cada que cambia algo del modelo. 
  * 
- * @author Pedro Luna Esquer
+ * @author Pedro Luna Esquer - 252687
  */
 public class PantallaInscripcion extends javax.swing.JFrame {
     
@@ -181,6 +182,10 @@ public class PantallaInscripcion extends javax.swing.JFrame {
         mostrarTicket(subject);
     }
 
+    /**
+     * Metodo para actualizar el panel que contiene a los talleres si el sujeto es la lista de talleres
+     * @param subject Sujeto observado.
+     */
     private void actualizarPanelesTalleres(Subject subject){
         if(subject instanceof ListaTalleresSubject){
             ListaTalleresSubject listaTalleres = (ListaTalleresSubject) subject;
@@ -190,51 +195,61 @@ public class PantallaInscripcion extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Metodo para mostrar los detalles del taller si el sujeto obtenido es un taller seleccionado
+     * @param subject Sujeto observado
+     */
     private void mostrarDetallesTaller(Subject subject){
         if(subject instanceof TallerSubject){
             TallerSubject taller = (TallerSubject) subject;
             PanelDetallesTaller panelDetalles = new PanelDetallesTaller(taller);
-            panelContenedorDetalles.removeAll();
-            panelContenedorDetalles.setLayout(new BorderLayout());
-            panelContenedorDetalles.add(panelDetalles, BorderLayout.CENTER);
-            panelContenedorDetalles.repaint();
-            panelContenedorDetalles.revalidate();
-            repaint();
-            revalidate();
+            cambiarContenedorDetalles(panelDetalles);
         }
     }
 
+    /**
+     * Metodo para mostrar los datos de los alumnos si el sujeto es un alumno
+     * @param subject Sujeto observado
+     */
     private void mostrarDatosAlumno(Subject subject) {
         if (subject instanceof AlumnoSubject){
             AlumnoSubject alumno = (AlumnoSubject) subject;
             PanelValidacionAlumno panelFormularioID = new PanelValidacionAlumno();
             panelFormularioID.mostrarDatosAlumno(alumno);
-            panelContenedorDetalles.removeAll();
-            panelContenedorDetalles.add(panelFormularioID, BorderLayout.CENTER);
-            panelContenedorDetalles.repaint();
-            panelContenedorDetalles.revalidate();
-            
+            cambiarContenedorDetalles(panelFormularioID);
         }
     }
 
+    /**
+     * Metodo para mostrar el formulario ID cuando se da clic en inscribir
+     */
     public void mostrarFormularioID(){
         PanelValidacionAlumno panelFormularioID = new PanelValidacionAlumno();
-        panelContenedorDetalles.removeAll();
-        panelContenedorDetalles.add(panelFormularioID, BorderLayout.CENTER);
-        panelContenedorDetalles.repaint();
-        panelContenedorDetalles.revalidate();
-        
+        cambiarContenedorDetalles(panelFormularioID);
     }
 
+    /**
+     * Metodo para mostrar el ticket de inscripcion si el sujeto es un ticket
+     * @param subject Sujeto observado
+     */
     private void mostrarTicket(Subject subject){
         if(subject instanceof TicketSubject){
             TicketSubject ticket = (TicketSubject) subject;
             PanelTicket panelTicket = new PanelTicket(ticket);
-            panelContenedorDetalles.removeAll();
-            panelContenedorDetalles.add(panelTicket, BorderLayout.CENTER);
-            panelContenedorDetalles.repaint();
-            panelContenedorDetalles.revalidate();
+            cambiarContenedorDetalles(panelTicket);
         }
+    }
+    
+    /**
+     * Metodo para cambiar el contenido del panel que contiene el proceso de la inscripcion
+     * @param panel Nuevo panel a mostrar dentro del proceso.
+     */
+    private void cambiarContenedorDetalles(JPanel panel){
+        panelContenedorDetalles.removeAll();
+        panelContenedorDetalles.setLayout(new BorderLayout());
+        panelContenedorDetalles.add(panel, BorderLayout.CENTER);
+        panelContenedorDetalles.repaint();
+        panelContenedorDetalles.revalidate();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

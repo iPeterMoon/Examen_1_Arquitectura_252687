@@ -2,6 +2,7 @@ package vista.paneles;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.security.InvalidParameterException;
 
 import javax.swing.JOptionPane;
 
@@ -10,8 +11,12 @@ import exceptions.AlumnoNoEncontradoException;
 import modelo.AlumnoSubject;
 
 /**
- *
- * @author pedro
+ * PanelValidacionAlumno.java
+ * 
+ * Panel con el formulario para ingresar el ID de un alumno para registrarlo a
+ * un taller
+ * 
+ * @author Pedro Luna Esquer - 252687
  */
 public class PanelValidacionAlumno extends javax.swing.JPanel {
 
@@ -147,26 +152,34 @@ public class PanelValidacionAlumno extends javax.swing.JPanel {
 
     private void btnInscribirseActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnInscribirseActionPerformed
         String id = txtIDAlumno.getText();
-        if (!id.matches("\\d{6}")) {
-            JOptionPane.showMessageDialog(null, "Error: Formato Inválido, asegurese de ingresar un ID de 6 digitos",
-                    "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        ControlInscribirTaller control = new ControlInscribirTaller();
-        try{
-            control.validarID(id);
-        } catch (AlumnoNoEncontradoException e){
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        validarID(id);
     }// GEN-LAST:event_btnInscribirseActionPerformed
 
+    /**
+     * Metodo que valida el Id de un alumno ingresado por el usuario
+     * @param idAlumno Id del alumno a validar
+     */
+    private void validarID(String idAlumno) {
+        try {
+            ControlInscribirTaller control = new ControlInscribirTaller();
+            control.validarID(idAlumno);
+        } catch (AlumnoNoEncontradoException | InvalidParameterException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    /**
+     * Metodo que se llama al momento de validar el id de un alumno y si este es
+     * válido
+     * muestra la info del alumno en otro panel.
+     * 
+     * @param alumno
+     */
     public void mostrarDatosAlumno(AlumnoSubject alumno) {
         PanelDatosAlumno panelAlumno = new PanelDatosAlumno(alumno);
         panelContenedor.removeAll();
         panelContenedor.setLayout(new BorderLayout());
         panelContenedor.add(panelAlumno, BorderLayout.CENTER);
-        panelContenedor.repaint();
-        panelContenedor.revalidate();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
