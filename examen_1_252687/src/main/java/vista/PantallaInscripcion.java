@@ -1,8 +1,13 @@
 package vista;
 
 /**
- *
- * @author pedro
+ * PantallaInscripcion.java
+ * 
+ * Frame que representa la pantalla principal del caso de uso de inscribirse
+ * a taller de Semana ISW, es en una sola pantalla y esta se va actualizando
+ * cada que cambia algo del modelo. 
+ * 
+ * @author Pedro Luna Esquer
  */
 public class PantallaInscripcion extends javax.swing.JFrame {
     

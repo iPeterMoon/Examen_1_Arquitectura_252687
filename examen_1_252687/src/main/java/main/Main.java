@@ -3,7 +3,10 @@ package main;
 import vista.PantallaInscripcion;
 
 /**
- *
+ * Main.java
+ * 
+ * Clase principal para ejecutar el programa.
+ * 
  * @author Pedro Luna Esquer
  */
 public class Main {
