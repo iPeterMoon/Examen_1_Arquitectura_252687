@@ -8,9 +8,9 @@ package modelo;
  * @author Pedro Luna Esquer
  */
 public interface IModeloControl {
-    public void seleccionarTaller();
+    public void seleccionarTaller(String nombreTaller);
 
-    public void inscribir();
+    public void inscribir(String nombreTaller, String id);
 
     public void confirmarInscripcion();
 

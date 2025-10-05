@@ -1,16 +1,15 @@
-package modelo;
+package modelo_negocio;
+
+import java.util.Date;
 
 public class Taller {
     
     private String nombre;
-
     private String instructor;
-    
     private String fechaYHora;
-
     private int cupo;
 
-    public Taller(String nombre, String instructor, String fechaYHora, int cupo){
+    public Taller(String nombre, String instructor, String fechaYHora, int cupo) {
         this.nombre = nombre;
         this.instructor = instructor;
         this.fechaYHora = fechaYHora;
@@ -48,6 +47,4 @@ public class Taller {
     public void setCupo(int cupo) {
         this.cupo = cupo;
     }
-    
-    
 }
