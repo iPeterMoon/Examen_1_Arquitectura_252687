@@ -1,6 +1,6 @@
 package modelo;
 
-public class TallerVista {
+public class TallerSubject extends Subject {
     
     private String nombre;
 
@@ -10,7 +10,8 @@ public class TallerVista {
 
     private int cupo;
 
-    public TallerVista(String nombre, String instructor, String fechaYHora, int cupo){
+    public TallerSubject(String nombre, String instructor, String fechaYHora, int cupo){
+        super();
         this.nombre = nombre;
         this.instructor = instructor;
         this.fechaYHora = fechaYHora;

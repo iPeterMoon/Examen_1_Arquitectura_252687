@@ -25,8 +25,14 @@ public class ModeloNegocioImp implements IModeloNegocio {
 
     @Override
     public void seleccionarTaller(String nombre) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'seleccionarTaller'");
+        ListaTalleres listaTalleres = ListaTalleres.getInstance();
+        for(Taller taller : listaTalleres.getTalleres()){
+            if(taller.getNombre().equals(nombre)){
+                this.tallerSeleccionado = taller;
+            }
+        }
+        IModeloVista modeloVista = new ModeloVistaFacade();
+        modeloVista.mostrarDetallesTaller(TallerMapper.toVista(tallerSeleccionado));
     }
 
     @Override

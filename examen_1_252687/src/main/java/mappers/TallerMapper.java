@@ -1,6 +1,6 @@
 package mappers;
 
-import modelo.TallerVista;
+import modelo.TallerSubject;
 import modelo_negocio.Taller;
 
 /**
@@ -13,12 +13,12 @@ import modelo_negocio.Taller;
  */
 public class TallerMapper {
     
-    public static TallerVista toVista(Taller taller){
+    public static TallerSubject toVista(Taller taller){
         String nombre = taller.getNombre();
         String instructor = taller.getInstructor();
         String fechaYHora = taller.getFechaYHora();
         int cupo = taller.getCupo();
-        return new TallerVista(nombre, instructor, fechaYHora, cupo);
+        return new TallerSubject(nombre, instructor, fechaYHora, cupo);
     }
 
 }

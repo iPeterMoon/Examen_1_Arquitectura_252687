@@ -8,7 +8,7 @@ import javax.swing.Box;
 import javax.swing.border.LineBorder;
 
 import modelo.ListaTalleresSubject;
-import modelo.TallerVista;
+import modelo.TallerSubject;
 
 /**
  *
@@ -75,9 +75,9 @@ public class PanelTalleres extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     public void actualizarTalleres(ListaTalleresSubject listaTalleres){
-        List<TallerVista> talleres = listaTalleres.getListaTalleres();
+        List<TallerSubject> talleres = listaTalleres.getListaTalleres();
         panelContenedorTalleres.removeAll();
-        for(TallerVista taller : talleres){
+        for(TallerSubject taller : talleres){
             PanelTaller panelTaller = new PanelTaller(taller);
             panelesTalleres.add(panelTaller);
             panelContenedorTalleres.add(panelTaller);

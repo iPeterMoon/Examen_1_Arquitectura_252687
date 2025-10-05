@@ -14,7 +14,7 @@ public class ListaTalleresSubject extends Subject {
     /**
      * Lista de talleres guardados en la base de datos
      */
-    private final List<TallerVista> talleres;
+    private final List<TallerSubject> talleres;
 
     private static ListaTalleresSubject instance;
 
@@ -37,7 +37,7 @@ public class ListaTalleresSubject extends Subject {
      * Metodo para agregar un taller a la lista de talleres
      * @param taller Taller a agregar a la lista
      */
-    public void agregarTaller(TallerVista taller){
+    public void agregarTaller(TallerSubject taller){
         this.talleres.add(taller);
         notifyAllObservers();
     }
@@ -47,8 +47,8 @@ public class ListaTalleresSubject extends Subject {
      * reemplaza todos los valores del taller que estaban en la lista
      * @param tallerActualizado Taller con nuevos datos
      */
-    public void actualizarTaller(TallerVista tallerActualizado) {
-        for(TallerVista taller : talleres) {
+    public void actualizarTaller(TallerSubject tallerActualizado) {
+        for(TallerSubject taller : talleres) {
             if(taller.getNombre().equals(tallerActualizado.getNombre())){
                 taller.setNombre(tallerActualizado.getNombre());
                 taller.setInstructor(tallerActualizado.getInstructor());
@@ -58,7 +58,7 @@ public class ListaTalleresSubject extends Subject {
         }
     }
 
-    public List<TallerVista> getListaTalleres(){
+    public List<TallerSubject> getListaTalleres(){
         return talleres;
     }
     

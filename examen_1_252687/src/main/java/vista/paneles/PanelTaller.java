@@ -1,6 +1,6 @@
 package vista.paneles;
 
-import modelo.TallerVista;
+import modelo.TallerSubject;
 import java.awt.Color;
 
 import javax.swing.border.LineBorder;
@@ -15,12 +15,12 @@ public class PanelTaller extends javax.swing.JPanel {
     /**
      * Creates new form PanelTaller
      */
-    public PanelTaller(TallerVista taller) {
+    public PanelTaller(TallerSubject taller) {
         initComponents();
         cargarTaller(taller);
     }
 
-    private void cargarTaller(TallerVista taller){
+    private void cargarTaller(TallerSubject taller){
         this.lblNombreTaller.setText(taller.getNombre());
         this.lblInstructor.setText(taller.getInstructor());
         repaint();

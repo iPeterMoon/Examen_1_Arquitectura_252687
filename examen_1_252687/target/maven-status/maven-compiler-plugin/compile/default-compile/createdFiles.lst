@@ -1,9 +1,9 @@
-vista\paneles\PanelTalleres.class
-vista\paneles\PanelDatosAlumno.class
-vista\paneles\PanelValidacionAlumno.class
-vista\PantallaInscripcion.class
 vista\paneles\PanelTaller.class
 main\Main.class
-vista\paneles\PanelDatosAlumno$1.class
 vista\paneles\PanelDetallesTaller.class
+vista\paneles\PanelValidacionAlumno.class
 vista\paneles\PanelTicket.class
+vista\paneles\PanelTalleres.class
+vista\PantallaInscripcion.class
+vista\paneles\PanelDatosAlumno.class
+vista\paneles\PanelDatosAlumno$1.class

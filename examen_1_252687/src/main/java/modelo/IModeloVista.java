@@ -10,11 +10,11 @@ public interface IModeloVista {
     
     public void mostrarAlumno();
 
-    public void mostrarDetallesTaller();
+    public void mostrarDetallesTaller(TallerSubject taller);
 
     public void mostrarTicket();
     
-    public void agregarTaller(TallerVista taller);
+    public void agregarTaller(TallerSubject taller);
 
     public void mostrarPantalla();
 
