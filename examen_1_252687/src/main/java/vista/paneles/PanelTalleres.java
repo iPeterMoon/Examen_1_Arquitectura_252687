@@ -1,8 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package vista.paneles;
+
+import java.awt.Color;
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.swing.Box;
+import javax.swing.border.LineBorder;
+
+import modelo.ListaTalleresSubject;
+import modelo.TallerVista;
 
 /**
  *
@@ -10,10 +16,13 @@ package vista.paneles;
  */
 public class PanelTalleres extends javax.swing.JPanel {
 
+    private static List<PanelTaller> panelesTalleres;
+
     /**
      * Creates new form PanelTalleres
      */
     public PanelTalleres() {
+        panelesTalleres = new LinkedList<>();
         initComponents();
     }
 
@@ -26,6 +35,7 @@ public class PanelTalleres extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         panelContenedorTalleres = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(249, 250, 251));
@@ -35,10 +45,12 @@ public class PanelTalleres extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Talleres Disponibles");
 
+        jScrollPane1.setBackground(new java.awt.Color(249, 250, 251));
+        jScrollPane1.setBorder(null);
+
         panelContenedorTalleres.setBackground(new java.awt.Color(249, 250, 251));
-        panelContenedorTalleres.setMaximumSize(new java.awt.Dimension(228, 276));
-        panelContenedorTalleres.setMinimumSize(new java.awt.Dimension(228, 276));
         panelContenedorTalleres.setLayout(new javax.swing.BoxLayout(panelContenedorTalleres, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane1.setViewportView(panelContenedorTalleres);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -48,7 +60,7 @@ public class PanelTalleres extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                    .addComponent(panelContenedorTalleres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -57,14 +69,35 @@ public class PanelTalleres extends javax.swing.JPanel {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelContenedorTalleres, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void actualizarTalleres(ListaTalleresSubject listaTalleres){
+        List<TallerVista> talleres = listaTalleres.getListaTalleres();
+        panelContenedorTalleres.removeAll();
+        for(TallerVista taller : talleres){
+            PanelTaller panelTaller = new PanelTaller(taller);
+            panelesTalleres.add(panelTaller);
+            panelContenedorTalleres.add(panelTaller);
+            panelContenedorTalleres.add(Box.createVerticalStrut(12));
+        }
+        repaint();
+        revalidate();
+    }
+
+    public static void despintarPaneles(){
+        for(PanelTaller panel : panelesTalleres){
+            panel.setBackground(Color.WHITE);
+            panel.setBorder(new LineBorder(new Color(194,194,194), 1, true));
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelContenedorTalleres;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,4 +8,6 @@ public interface IModeloNegocio {
 
     public void validarID(String idAlumno);
 
+    public void empezarCasoUso();
+
 }

@@ -1,9 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package vista.paneles;
 
+import modelo.TallerVista;
+import java.awt.Color;
+
+import javax.swing.border.LineBorder;
+
+import control.ControlInscribirTaller;
 /**
  *
  * @author pedro
@@ -13,8 +15,16 @@ public class PanelTaller extends javax.swing.JPanel {
     /**
      * Creates new form PanelTaller
      */
-    public PanelTaller() {
+    public PanelTaller(TallerVista taller) {
         initComponents();
+        cargarTaller(taller);
+    }
+
+    private void cargarTaller(TallerVista taller){
+        this.lblNombreTaller.setText(taller.getNombre());
+        this.lblInstructor.setText(taller.getInstructor());
+        repaint();
+        revalidate();
     }
 
     /**
@@ -30,6 +40,12 @@ public class PanelTaller extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(194, 194, 194), 1, true));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         lblNombreTaller.setText("Nombre Taller");
 
@@ -57,6 +73,21 @@ public class PanelTaller extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        mostrarDetallesTaller();
+        PanelTalleres.despintarPaneles();
+        cambiarColor();
+    }//GEN-LAST:event_formMouseClicked
+
+    private void mostrarDetallesTaller(){
+        ControlInscribirTaller control = new ControlInscribirTaller();
+        control.seleccionarTaller(lblNombreTaller.getText());
+    }
+
+    private void cambiarColor(){
+        this.setBackground(new Color(199,210,254));
+        this.setBorder(new LineBorder(Color.BLACK, 1, true));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblInstructor;

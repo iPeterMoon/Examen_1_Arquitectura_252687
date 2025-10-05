@@ -1,5 +1,6 @@
 package vista;
 
+import modelo.ListaTalleresSubject;
 import modelo.Subject;
 
 /**
@@ -50,7 +51,7 @@ public class PantallaInscripcion extends javax.swing.JFrame {
         panelContenedorDetalles = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        panelTalleres2 = new vista.paneles.PanelTalleres();
+        panelTalleres = new vista.paneles.PanelTalleres();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,7 +125,7 @@ public class PantallaInscripcion extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(panelTalleres2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelTalleres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))
@@ -140,7 +141,7 @@ public class PantallaInscripcion extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelTalleres2, javax.swing.GroupLayout.PREFERRED_SIZE, 349, Short.MAX_VALUE))
+                    .addComponent(panelTalleres, javax.swing.GroupLayout.PREFERRED_SIZE, 349, Short.MAX_VALUE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -163,7 +164,16 @@ public class PantallaInscripcion extends javax.swing.JFrame {
      * @param subject Recibe un subject que fue la clase que cambio
      */
     public void actualizarVista(Subject subject){
-        //TODO: Agregar metodos para actualizar la vista.
+        actualizarPanelesTalleres(subject);
+    }
+
+    private void actualizarPanelesTalleres(Subject subject){
+        if(subject instanceof ListaTalleresSubject){
+            ListaTalleresSubject listaTalleres = (ListaTalleresSubject) subject;
+            panelTalleres.actualizarTalleres(listaTalleres);
+            repaint();
+            revalidate();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -174,6 +184,6 @@ public class PantallaInscripcion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel panelContenedorDetalles;
-    private vista.paneles.PanelTalleres panelTalleres2;
+    private vista.paneles.PanelTalleres panelTalleres;
     // End of variables declaration//GEN-END:variables
 }

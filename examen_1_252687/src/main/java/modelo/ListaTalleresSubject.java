@@ -16,11 +16,21 @@ public class ListaTalleresSubject extends Subject {
      */
     private final List<TallerVista> talleres;
 
+    private static ListaTalleresSubject instance;
+
     /**
      * Constructor que inicializa la lista de talleres.
      */
-    public ListaTalleresSubject() {
+    private ListaTalleresSubject() {
+        super();
         this.talleres = new LinkedList<>();
+    }
+
+    public static ListaTalleresSubject getInstance(){
+        if(instance == null){
+            instance = new ListaTalleresSubject();
+        }
+        return instance;
     }
 
     /**
@@ -29,6 +39,7 @@ public class ListaTalleresSubject extends Subject {
      */
     public void agregarTaller(TallerVista taller){
         this.talleres.add(taller);
+        notifyAllObservers();
     }
     
     /**
@@ -45,6 +56,10 @@ public class ListaTalleresSubject extends Subject {
                 taller.setCupo(tallerActualizado.getCupo());
             }
         }
+    }
+
+    public List<TallerVista> getListaTalleres(){
+        return talleres;
     }
     
 }

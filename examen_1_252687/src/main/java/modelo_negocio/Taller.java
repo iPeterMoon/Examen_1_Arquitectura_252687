@@ -1,7 +1,5 @@
 package modelo_negocio;
 
-import java.util.Date;
-
 public class Taller {
     
     private String nombre;

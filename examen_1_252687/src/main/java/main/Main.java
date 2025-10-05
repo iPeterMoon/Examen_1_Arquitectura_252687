@@ -1,5 +1,10 @@
 package main;
 
+import modelo.ListaTalleresSubject;
+import modelo_negocio.IModeloNegocio;
+import modelo_negocio.ModeloNegocioImp;
+import vista.IObserver;
+import vista.ModelObserver;
 import vista.PantallaInscripcion;
 
 /**
@@ -12,9 +17,15 @@ import vista.PantallaInscripcion;
 public class Main {
 
     public static void main(String[] args) {
-        PantallaInscripcion pantalla = PantallaInscripcion.getInstance();
-        pantalla.setVisible(true);
-        pantalla.setLocationRelativeTo(null);
+
+        ListaTalleresSubject listaTalleres = ListaTalleresSubject.getInstance();
+        
+        IObserver observer = new ModelObserver();
+        
+        listaTalleres.addObserver(observer);
+
+        IModeloNegocio modeloNegocio = ModeloNegocioImp.getInstance();
+        modeloNegocio.empezarCasoUso();
     }
     
 }

@@ -1,4 +1,5 @@
 package modelo_negocio;
+
 /**
  * AlumnoSubject.java
  * 

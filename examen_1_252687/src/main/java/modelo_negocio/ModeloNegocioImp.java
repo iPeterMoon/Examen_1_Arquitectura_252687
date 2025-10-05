@@ -1,11 +1,17 @@
 package modelo_negocio;
 
+import java.util.List;
+
+import mappers.TallerMapper;
+import modelo.IModeloVista;
+import modelo.ModeloVistaFacade;
+
 public class ModeloNegocioImp implements IModeloNegocio {
 
     private static ModeloNegocioImp instance;
 
     private ModeloNegocioImp(){
-
+        
     }
 
     public static ModeloNegocioImp getInstance(){
@@ -35,4 +41,23 @@ public class ModeloNegocioImp implements IModeloNegocio {
         throw new UnsupportedOperationException("Unimplemented method 'validarID'");
     }
     
+    /**
+     * Carga los talleres hacia el modelo de la vista
+     */
+    private void cargarTalleres(){
+        ListaTalleres listaTalleres = ListaTalleres.getInstance();
+        List<Taller> talleres = listaTalleres.getTalleres();
+        IModeloVista modeloVista = new ModeloVistaFacade();
+        for(Taller taller : talleres){
+            modeloVista.agregarTaller(TallerMapper.toVista(taller));
+        } 
+    }
+
+    @Override
+    public void empezarCasoUso() {
+        IModeloVista modeloVista = new ModeloVistaFacade();
+        cargarTalleres();
+        modeloVista.mostrarPantalla();
+    }
+
 }

@@ -12,8 +12,8 @@ public class ModelObserver implements IObserver {
 
     @Override
     public void update(Subject subject) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        PantallaInscripcion pantalla = PantallaInscripcion.getInstance();
+        pantalla.actualizarVista(subject);
     }
     
 }
